@@ -1,4 +1,4 @@
-# 🕯️ Helena Coelho — Landing Page
+#  Helena Coelho — Landing Page
 
 **Site ao vivo:** https://helanatscoelho.github.io/helena-coelho-lp/
 
