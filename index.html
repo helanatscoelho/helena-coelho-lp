@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Helena Coelho — Gestora · Empreendedora · Missionária</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --cafe: #5C3D2E; --cafe-lt: #7A5542; --bege: #F5EFE6; --areia: #E8DDD0;
+      --offwhite: #FAF7F4; --oliva: #6B7C5C; --oliva-lt: #8A9B73;
+      --dourado: #C9A84C; --preto: #1A1A1A; --cinza: #6B6B6B; --branco: #FFFFFF;
+      --ff-serif: 'Cormorant Garamond', Georgia, serif;
+      --ff-sans: 'Inter', system-ui, sans-serif;
+      --radius: 2px; --shadow: 0 4px 40px rgba(92,61,46,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-sans); background: var(--offwhite); color: var(--preto); line-height: 1.7; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(250,247,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--areia); padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-family: var(--ff-serif); font-size: 1.3rem; font-weight: 600; color: var(--cafe); letter-spacing: 0.03em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cinza); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--cafe); }
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 80px 5vw 60px; gap: 4rem; background: linear-gradient(135deg, var(--offwhite) 60%, var(--areia) 100%); position: relative; overflow: hidden; }
+    .hero-text { max-width: 560px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dourado); margin-bottom: 1.2rem; }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--dourado); }
+    .hero-title { font-family: var(--ff-serif); font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 300; line-height: 1.1; color: var(--cafe); margin-bottom: 0.4rem; }
+    .hero-title em { font-style: italic; color: var(--oliva); }
+    .hero-subtitle { font-family: var(--ff-serif); font-size: 1.25rem; font-weight: 300; color: var(--cinza); margin-bottom: 1.8rem; font-style: italic; }
+    .hero-desc { font-size: 0.92rem; color: var(--cinza); margin-bottom: 2rem; max-width: 440px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+    .tag { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; padding: 0.35rem 0.9rem; border-radius: 20px; border: 1px solid var(--areia); color: var(--cafe-lt); background: var(--branco); }
+    .btn-primary { display: inline-block; padding: 0.85rem 2.2rem; background: var(--cafe); color: var(--branco); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: background 0.25s, transform 0.2s; }
+    .btn-primary:hover { background: var(--cafe-lt); transform: translateY(-2px); }
+    .btn-secondary { display: inline-block; padding: 0.85rem 2.2rem; background: transparent; color: var(--cafe); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--cafe); border-radius: var(--radius); transition: all 0.25s; }
+    .btn-secondary:hover { background: var(--cafe); color: var(--branco); }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-image { display: flex; justify-content: center; align-items: center; position: relative; }
+    .hero-img-frame { width: min(380px, 90%); aspect-ratio: 3/4; background: var(--areia); border-radius: 4px; overflow: hidden; position: relative; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; }
+    .hero-img-frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .hero-img-frame .placeholder { font-family: var(--ff-serif); font-size: 6rem; font-weight: 300; color: rgba(92,61,46,0.15); }
+    .hero-img-badge { position: absolute; bottom: -16px; left: -16px; background: var(--cafe); color: var(--branco); padding: 0.9rem 1.4rem; border-radius: 4px; font-size: 0.75rem; font-weight: 500; line-height: 1.5; box-shadow: var(--shadow); }
+    .hero-img-badge strong { display: block; font-family: var(--ff-serif); font-size: 1.5rem; font-weight: 600; line-height: 1; }
+    section { padding: 80px 5vw; }
+    .section-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dourado); display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem; }
+    .section-eyebrow::before { content: ''; display: block; width: 22px; height: 1px; background: var(--dourado); }
+    .section-title { font-family: var(--ff-serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--cafe); line-height: 1.2; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; color: var(--oliva); }
+    .section-lead { font-size: 0.95rem; color: var(--cinza); max-width: 540px; line-height: 1.8; }
+    #sobre { background: var(--bege); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .sobre-text p { font-size: 0.92rem; color: var(--cinza); margin-bottom: 1rem; line-height: 1.85; }
+    .sobre-text p strong { color: var(--cafe); font-weight: 500; }
+    .sobre-text blockquote { border-left: 2px solid var(--dourado); padding: 0.8rem 1.2rem; margin: 1.8rem 0; font-family: var(--ff-serif); font-size: 1.2rem; font-style: italic; color: var(--cafe); line-height: 1.5; }
+    .sobre-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .stat-card { background: var(--branco); border-radius: 4px; padding: 1.4rem; box-shadow: 0 2px 16px rgba(92,61,46,0.07); }
+    .stat-card .num { font-family: var(--ff-serif); font-size: 2.2rem; font-weight: 600; color: var(--cafe); line-height: 1; }
+    .stat-card .label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cinza); margin-top: 0.3rem; }
+    #identidade { background: var(--offwhite); }
+    .identidade-header { text-align: center; max-width: 620px; margin: 0 auto 4rem; }
+    .pilares-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .pilar-card { background: var(--branco); border-radius: 4px; padding: 2.5rem 2rem; box-shadow: var(--shadow); position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+    .pilar-card:hover { transform: translateY(-6px); box-shadow: 0 12px 48px rgba(92,61,46,0.15); }
+    .pilar-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
+    .pilar-card.gestora::before { background: var(--cafe); }
+    .pilar-card.empreend::before { background: var(--dourado); }
+    .pilar-card.missao::before { background: var(--oliva); }
+    .pilar-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .pilar-title { font-family: var(--ff-serif); font-size: 1.55rem; font-weight: 600; color: var(--cafe); margin-bottom: 0.5rem; }
+    .pilar-sub { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dourado); margin-bottom: 1rem; }
+    .pilar-desc { font-size: 0.88rem; color: var(--cinza); line-height: 1.75; }
+    .pilar-list { list-style: none; margin-top: 1.2rem; }
+    .pilar-list li { font-size: 0.82rem; color: var(--cinza); padding: 0.3rem 0; border-bottom: 1px solid var(--areia); display: flex; align-items: center; gap: 0.5rem; }
+    .pilar-list li:last-child { border-bottom: none; }
+    .pilar-list li::before { content: '→'; color: var(--dourado); font-size: 0.75rem; }
+    #agenda { background: var(--cafe); color: var(--branco); }
+    #agenda .section-eyebrow { color: var(--dourado); }
+    #agenda .section-eyebrow::before { background: var(--dourado); }
+    #agenda .section-title { color: var(--branco); }
+    .agenda-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+    .agenda-intro p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.2rem; }
+    .btn-agenda { display: inline-block; margin-top: 0.5rem; padding: 0.75rem 1.8rem; background: var(--dourado); color: var(--preto); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: var(--radius); transition: opacity 0.2s, transform 0.2s; }
+    .btn-agenda:hover { opacity: 0.85; transform: translateY(-2px); }
+    .agenda-events { display: flex; flex-direction: column; gap: 1rem; }
+    .event-card { display: grid; grid-template-columns: 70px 1fr auto; align-items: center; gap: 1.5rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 1.2rem 1.5rem; transition: background 0.2s; }
+    .event-card:hover { background: rgba(255,255,255,0.12); }
+    .event-date { text-align: center; }
+    .event-date .day { font-family: var(--ff-serif); font-size: 2.2rem; font-weight: 600; color: var(--dourado); line-height: 1; }
+    .event-date .month { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .event-name { font-family: var(--ff-serif); font-size: 1.05rem; font-weight: 600; color: var(--branco); }
+    .event-local { font-size: 0.76rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+    .event-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.7); white-space: nowrap; }
+    .event-badge.confirmado { border-color: #8A9B73; color: #8A9B73; }
+    .agenda-footer { text-align: center; margin-top: 2.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .agenda-footer a { color: var(--dourado); text-decoration: none; }
+    #posicionamento { background: var(--bege); }
+    .pos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+    .pos-block { background: var(--branco); padding: 2rem; border-radius: 4px; box-shadow: 0 2px 20px rgba(92,61,46,0.07); }
+    .pos-block h3 { font-family: var(--ff-serif); font-size: 1.2rem; font-weight: 600; color: var(--cafe); margin-bottom: 1rem; }
+    .pos-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pos-block ul li { font-size: 0.85rem; color: var(--cinza); padding: 0.4rem 0; border-bottom: 1px solid var(--areia); display: flex; gap: 0.6rem; align-items: flex-start; }
+    .pos-block ul li:last-child { border-bottom: none; }
+    #contato { background: var(--offwhite); text-align: center; }
+    .contato-header { max-width: 540px; margin: 0 auto 3rem; }
+    .links-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 3rem; }
+    .link-card { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1.6rem; background: var(--branco); border: 1px solid var(--areia); border-radius: 4px; text-decoration: none; color: var(--cafe); font-size: 0.85rem; font-weight: 500; transition: all 0.22s; box-shadow: 0 2px 12px rgba(92,61,46,0.06); }
+    .link-card:hover { background: var(--cafe); color: var(--branco); border-color: var(--cafe); transform: translateY(-3px); }
+    .licon { font-size: 1.1rem; }
+    .contato-email { font-size: 0.85rem; color: var(--cinza); }
+    .contato-email a { color: var(--cafe); text-decoration: none; font-weight: 500; }
+    footer { background: var(--preto); color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem 5vw; font-size: 0.75rem; }
+    footer a { color: var(--dourado); text-decoration: none; }
+    .footer-logo { font-family: var(--ff-serif); font-size: 1.8rem; font-weight: 300; color: var(--branco); margin-bottom: 0.5rem; display: block; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; margin: 1rem 0; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; padding-top: 90px; }
+      .hero-image { display: none; }
+      #sobre { grid-template-columns: 1fr; }
+      .pilares-grid { grid-template-columns: 1fr; }
+      .agenda-layout { grid-template-columns: 1fr; }
+      .pos-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#hero" class="nav-logo">Helena Coelho</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#identidade">Identidade</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+  <section id="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Prazer, eu sou</div>
+      <h1 class="hero-title">Helena<br><em>Coelho</em></h1>
+      <p class="hero-subtitle">Gestora · Empreendedora · Missionária</p>
+      <p class="hero-desc">Formada em Direito, gestora de tráfego pago, videomaker, catequista e pregadora. Aqui você não vai encontrar perfeição — vai encontrar uma vida real, construída com clareza, disciplina e fé.</p>
+      <div class="hero-tags">
+        <span class="tag">Tráfego Pago</span>
+        <span class="tag">Marketing</span>
+        <span class="tag">Pregação</span>
+        <span class="tag">TDAH</span>
+        <span class="tag">Fé</span>
+        <span class="tag">Organização</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#agenda" class="btn-primary">Ver Agenda de Missão</a>
+        <a href="#sobre" class="btn-secondary">Conheça minha história</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-img-frame">
+        <!-- FOTO: descomente e coloque o caminho da sua imagem -->
+        <!-- <img src="assets/images/helena-hero.jpg" alt="Helena Coelho"> -->
+        <span class="placeholder">HC</span>
+      </div>
+      <div class="hero-img-badge"><strong>+12</strong> anos pregando</div>
+    </div>
+  </section>
+  <section id="sobre">
+    <div class="sobre-text">
+      <div class="section-eyebrow">Minha história</div>
+      <h2 class="section-title">Uma vida real.<br><em>Sem personagem.</em></h2>
+      <p>Durante anos, vivi tentando equilibrar <strong>produtividade, trabalho, espiritualidade, rotina e saúde mental</strong> — e descobri que muitas mulheres vivem exatamente o mesmo conflito: querem crescer profissionalmente sem perder a própria essência.</p>
+      <blockquote>"Uma mulher organizada não é aquela que dá conta de tudo. É aquela que aprende a direcionar a própria vida com clareza, disciplina e propósito."</blockquote>
+      <p>Sou formada em Direito, gestora de tráfego pago, videomaker, catequista e pregadora. Compartilho minha rotina e meus aprendizados sobre gestão pessoal, marketing, finanças, organização, TDAH e vida espiritual — sempre com uma visão prática e humana.</p>
+      <p><strong>Minha missão</strong> é ajudar mulheres a estruturarem a vida pessoal, financeira, profissional e espiritual sem viverem reféns do caos.</p>
+    </div>
+    <div>
+      <div class="sobre-stats">
+        <div class="stat-card"><div class="num">2012</div><div class="label">Pregando desde</div></div>
+        <div class="stat-card"><div class="num">3</div><div class="label">Frentes de atuação</div></div>
+        <div class="stat-card"><div class="num">∞</div><div class="label">Missões em andamento</div></div>
+        <div class="stat-card"><div class="num">1</div><div class="label">Vida real compartilhada</div></div>
+      </div>
+    </div>
+  </section>
+  <section id="identidade">
+    <div class="identidade-header">
+      <div class="section-eyebrow">Quem eu sou</div>
+      <h2 class="section-title">Três frentes.<br><em>Uma identidade.</em></h2>
+      <p class="section-lead">Quando as pessoas pensam no meu trabalho, pensam primeiro em mim. E quando pensam em fé, também pensam em mim. Não é acidente — é posicionamento.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card gestora">
+        <div class="pilar-icon">📊</div>
+        <div class="pilar-sub">Frente 01</div>
+        <h3 class="pilar-title">Gestora &amp; Empreendedora</h3>
+        <p class="pilar-desc">Gestora de tráfego pago que vive de verdade. Não a profissional perfeita — a mulher real que trabalha muito, sente tudo intensamente e não esconde nenhuma parte disso.</p>
+        <ul class="pilar-list">
+          <li>Gestão de tráfego pago</li>
+          <li>Estratégia de marketing digital</li>
+          <li>Videomaker &amp; comunicação</li>
+          <li>Formada em Direito</li>
+        </ul>
+      </div>
+      <div class="pilar-card empreend">
+        <div class="pilar-icon">🌿</div>
+        <div class="pilar-sub">Frente 02</div>
+        <h3 class="pilar-title">Gestão da Vida</h3>
+        <p class="pilar-desc">Organização, rotina, saúde mental e TDAH como pautas reais. Autorresponsabilidade sem vitimização, e clareza sem coaching vazio.</p>
+        <ul class="pilar-list">
+          <li>Gestão pessoal e rotina</li>
+          <li>Finanças e organização</li>
+          <li>Saúde mental e TDAH</li>
+          <li>Vida leve e estratégica</li>
+        </ul>
+      </div>
+      <div class="pilar-card missao">
+        <div class="pilar-icon">🕯️</div>
+        <div class="pilar-sub">Frente 03</div>
+        <h3 class="pilar-title">Pregadora &amp; Missionária</h3>
+        <p class="pilar-desc">Pregando desde 2012. Consagrada à Santíssima Trindade. A fé aparece como parte de quem eu sou, naturalmente, quando o assunto pede.</p>
+        <ul class="pilar-list">
+          <li>Pregação desde 2012</li>
+          <li>Catequista</li>
+          <li>Consagrada @ctrindadesanta</li>
+          <li>Missões pelo Brasil</li>
+        </ul>
+        <div style="margin-top:1.2rem;"><a href="https://www.instagram.com/euhelenacoelhots" target="_blank" class="btn-secondary" style="font-size:0.7rem;padding:0.5rem 1rem;">Instagram Missões →</a></div>
+      </div>
+    </div>
+  </section>
+  <section id="agenda">
+    <div class="section-eyebrow">Onde estarei</div>
+    <h2 class="section-title">Agenda de <em>Missão</em></h2>
+    <div class="agenda-layout">
+      <div class="agenda-intro">
+        <p>Aqui você acompanha os eventos, missões e pregações com datas e locais confirmados. Para convites, fale pelo Instagram.</p>
+        <p>"Jovens, não tenhais medo de ser santos."</p>
+        <a href="https://www.instagram.com/euhelenacoelhots" target="_blank" class="btn-agenda">📩 Solicitar Pregação</a>
+      </div>
+      <div class="agenda-events">
+        <!-- EDITE OS EVENTOS AQUI MENSALMENTE -->
+        <div class="event-card">
+          <div class="event-date"><div class="day">11</div><div class="month">Mai</div></div>
+          <div class="event-info"><div class="event-name">Inicialização da Vida Cristã</div><div class="event-local">📍 Itaperuna – RJ</div></div>
+          <span class="event-badge confirmado">Confirmado</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><div class="day">18</div><div class="month">Mai</div></div>
+          <div class="event-info"><div class="event-name">Aviva Jovem</div><div class="event-local">📍 Macuco – RJ</div></div>
+          <span class="event-badge confirmado">Confirmado</span>
+        </div>
+        <div class="event-card">
+          <div class="event-date"><div class="day">27</div><div class="month">Mai</div></div>
+          <div class="event-info"><div class="event-name">Quem Como Deus</div><div class="event-local">📍 Palma – MG</div></div>
+          <span class="event-badge confirmado">Confirmado</span>
+        </div>
+        <div class="event-card" style="opacity:0.5;">
+          <div class="event-date"><div class="day">—</div><div class="month">Jun</div></div>
+          <div class="event-info"><div class="event-name">Próximos eventos em breve</div><div class="event-local">📍 A confirmar</div></div>
+          <span class="event-badge">Em breve</span>
+        </div>
+      </div>
+    </div>
+    <p class="agenda-footer">Agenda atualizada mensalmente · <a href="https://www.instagram.com/euhelenacoelhots" target="_blank">@euhelenacoelhots</a></p>
+  </section>
+  <section id="posicionamento">
+    <div style="max-width:600px; margin-bottom:3rem;">
+      <div class="section-eyebrow">Para quem é isso</div>
+      <h2 class="section-title">Você vai se<br><em>identificar</em> se…</h2>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-block">
+        <h3>💻 No trabalho, você é…</h3>
+        <ul>
+          <li><span>→</span> Gestora ou profissional de marketing digital</li>
+          <li><span>→</span> Empreendedora que quer ser referência humana</li>
+          <li><span>→</span> Alguém que compra primeiro a pessoa, depois o serviço</li>
+          <li><span>→</span> Profissional que quer performance sem abrir mão da vida</li>
+        </ul>
+      </div>
+      <div class="pos-block">
+        <h3>🌿 Na vida, você sente…</h3>
+        <ul>
+          <li><span>→</span> Que rotina, produtividade e fé podem coexistir</li>
+          <li><span>→</span> Que crescer sem paz não vale a pena</li>
+          <li><span>→</span> Que está desaparecendo dentro da sua própria rotina</li>
+          <li><span>→</span> Que autenticidade é mais poderosa que perfeição</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section id="contato">
+    <div class="contato-header">
+      <div class="section-eyebrow">Vamos nos conectar</div>
+      <h2 class="section-title">Encontre-me<br><em>onde eu estou</em></h2>
+      <p class="section-lead">Escolha o canal que faz mais sentido pra você. Para pregações e missões, o contato é pelo Instagram @euhelenacoelhots.</p>
+    </div>
+    <div class="links-grid">
+      <a href="https://www.instagram.com/helenacoelhots" target="_blank" class="link-card"><span class="licon">📸</span> Instagram Principal</a>
+      <a href="https://www.instagram.com/euhelenacoelhots" target="_blank" class="link-card"><span class="licon">🕯️</span> Instagram Missões</a>
+      <!-- ADICIONE MAIS LINKS AQUI -->
+    </div>
+    <p class="contato-email">Para parcerias: <a href="mailto:seuemail@email.com">seuemail@email.com</a></p>
+  </section>
+  <footer>
+    <span class="footer-logo">Helena Coelho</span>
+    <div class="footer-links">
+      <a href="#sobre">Sobre</a>
+      <a href="#identidade">Identidade</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <p>Gestora · Empreendedora · Missionária</p>
+    <p style="margin-top:0.5rem;"><a href="https://www.instagram.com/euhelenacoelhots" target="_blank">@euhelenacoelhots</a></p>
+  </footer>
+</body>
+</html>
